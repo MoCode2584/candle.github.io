@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+      body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+        }
+        
+    </style>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="icons">
+            <a href="login.html" class="login-icon">
+                <i class="fas fa-user"></i> <!-- Font Awesome user icon -->
+            </a>
+            <i class="fas fa-shopping-cart cart-icon" onclick="viewCart()"></i> <!-- Font Awesome shopping cart icon -->
+        </div>
+        <div class="logo">
+            <a href="candle.html"><strong></strong> Candle Shop</a>
+        </div>
+        <ul>
+            <li><a href="candle.html" class="active">Home</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="photo.html" class="active">Photos</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+            <li><a href="booking.html" class="active">Booking</a></li>
+        </ul>
+    </div>
+
+    <h1>Shopping Cart</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="cart-items">
+            <!-- Cart items will be dynamically added here -->
+        </tbody>
+    </table>
+
+    <div class="total">
+        <strong>Total: $<span id="cart-total">0.00</span></strong>
+    </div>
+
+    <button class="checkout-btn2" onclick="checkout()">Checkout</button>
+
+    <script>
+        // Function to dynamically update the cart items and total on cart.html
+        function updateCartOnCartPage() {
+        const cartItemsElement = document.getElementById('cart-items');
+        const cartTotalElement = document.getElementById('cart-total');
+        let cartList = '';
+
+        // Retrieve existing cart data from localStorage
+        const storedCart = localStorage.getItem('cart');
+        const cart = storedCart ? JSON.parse(storedCart) : [];
+
+        let total = 0;
+        cart.forEach((item, index) => {
+            cartList += `<tr><td>${item.name}</td><td>$${item.price.toFixed(2)}</td><td><button onclick="removeFromCart(${index})">Remove</button></td></tr>`;
+            total += item.price;
+        });
+
+        cartItemsElement.innerHTML = cartList;
+        cartTotalElement.textContent = total.toFixed(2);
+    }
+
+        // Function to remove an item from the cart
+        function removeFromCart(index) {
+        // Retrieve existing cart data from localStorage
+        const storedCart = localStorage.getItem('cart');
+        const cart = storedCart ? JSON.parse(storedCart) : [];
+
+        // Remove the item at the specified index
+        cart.splice(index, 1);
+
+        // Save the updated cart back to localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        // Update the cart on the page
+        updateCartOnCartPage();
+    }
+
+        // Function to handle the checkout process
+        function checkout() {
+        // Retrieve existing cart data from localStorage
+        const storedCart = localStorage.getItem('cart');
+        const cart = storedCart ? JSON.parse(storedCart) : [];
+
+        // Calculate the total price
+        let total = 0;
+        cart.forEach(item => {
+            total += item.price;
+        });
+
+        // Clear the cart (optional)
+        localStorage.removeItem('cart');
+
+        // Redirect to the checkout page with the total as a parameter
+        window.location.href = `checkout.html?total=${total.toFixed(2)}`;
+    }
+
+    // Initial update when the page loads
+    updateCartOnCartPage();
+    
+        function addToCart(name, price) {
+            // Retrieve existing cart data from localStorage
+            const storedCart = localStorage.getItem('cart');
+            const cart = storedCart ? JSON.parse(storedCart) : [];
+
+            // Add the new item to the cart
+            cart.push({ name, price });
+
+            // Save the updated cart back to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Update the cart on the main page
+            updateCartOnMainPage();
+        }
+// Initialize the cart array
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+// Function to dynamically update the cart items and total
+function updateCart() {
+    const cartItemsElement = document.getElementById('cart-items');
+    const cartTotalElement = document.getElementById('cart-total');
+    let cartList = '';
+
+    let total = 0;
+    cart.forEach(item => {
+        cartList += `<li>${item.name} - $${item.price.toFixed(2)}</li>`;
+        total += item.price;
+    });
+
+    cartItemsElement.innerHTML = cartList;
+    cartTotalElement.textContent = total.toFixed(2);
+}
+
+// Other cart page functions and logic...
+
+    </script>
+</body>
+
+</html>

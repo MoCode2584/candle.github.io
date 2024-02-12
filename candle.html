@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candle Shop</title>
+    <!-- Add Font Awesome CSS link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,300,700">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+</head>
+
+<body>
+     <div id="coupon-popup" class="coupon-popup-container" style="display: none;"> 
+    <!-- Coupon pop-up content -->
+     <div class="coupon-content">
+            <button class="close-button" onclick="cancelCoupon()">X</button>
+            <h3>Special Offer!</h3>
+            <p>Get 10% off your next purchase with coupon code: <strong>SAVE10</strong></p>
+            <button onclick="applyCoupon()">Apply Coupon</button>
+        </div> 
+    </div>
+
+    <!-- First Section - Welcome -->
+    <div class="welcome-section">
+        <h2>FREE SHIPPING ON ALL ORDERS OVER $150</h2>
+    </div>
+    <!-- Second Section - Top Bar -->
+    <!-- <div class="top-bar"> -->
+    <!-- Icons for sign-in and shopping cart -->
+    <div class="icons">
+        <a href="login.php" class="login-icon">
+            <i class="fas fa-user"></i>
+        </a>
+        <i class="fas fa-shopping-cart cart-icon" onclick="viewCart()">
+            <span id="cart-notification"></span>
+        </i>
+    </div>
+    <div class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="candle.html"><strong></strong> Candle Shop</a>
+            </div>
+            <ul>
+                <li><a href="candle.html" class="active">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="photo.html" class="active">Photos</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="booking.html" class="active">Booking</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="photos" style="position: relative;">
+        <img src="images/download.jpg" alt="Candle Shop" class="background-image">
+
+        <!-- Text and button container -->
+        <div class="overlay">
+            <h2>Welcome to the Candle Shop</h2>
+            <p>Discover our exquisite collection of candles.</p>
+            <button>Shop Now</button>
+        </div>
+    </div>
+
+
+
+    <!-- Most Popular Candles heading -->
+    <h2 style="text-align: center; font-size: 24px; margin: 20px 0;">Most Popular Candles</h2>
+
+    <!-- Products container -->
+    <div class="products-scroll-wrapper">
+
+        <!-- Product 1 -->
+        <div class="product">
+            <a href="images/download.jpg" data-lightbox="product1" data-title="Candle 1"
+                onclick="showProductDetails('Candle 1', 'Lorem ipsum description.')">
+                <img src="images/download.jpg" alt="Candle 1">
+            </a>
+            <h3>Candle 1</h3>
+            <p>$10.99</p>
+            <button onclick="addToCart('Candle 1', 10.99)">Add to Cart</button>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product">
+            <a href="images/download.jpg" data-lightbox="product1" data-title="Candle 2"
+                onclick="showProductDetails('Candle 1', 'Lorem ipsum description.')">
+                <img src="images/download.jpg" alt="Candle 2">
+            </a>
+            <h3>Candle 2</h3>
+            <p>$10.99</p>
+            <button onclick="addToCart('Candle 1', 10.99)">Add to Cart</button>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product">
+            <a href="images/download.jpg" data-lightbox="product1" data-title="Candle 3"
+                onclick="showProductDetails('Candle 3', 'Lorem ipsum description.')">
+                <img src="images/download.jpg" alt="Candle 3">
+            </a>
+            <h3>Candle 3</h3>
+            <p>$10.99</p>
+            <button onclick="addToCart('Candle 1', 10.99)">Add to Cart</button>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product">
+            <a href="images/download.jpg" data-lightbox="product1" data-title="Candle 4"
+                onclick="showProductDetails('Candle 4', 'Lorem ipsum description.')">
+                <img src="images/download.jpg" alt="Candle 4">
+            </a>
+            <h3>Candle 4</h3>
+            <p>$10.99</p>
+            <button onclick="addToCart('Candle 1', 10.99)">Add to Cart</button>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product">
+            <a href="images/download.jpg" data-lightbox="product1" data-title="Candle 5"
+                onclick="showProductDetails('Candle 5', 'Lorem ipsum description.')">
+                <img src="images/download.jpg" alt="Candle 5">
+            </a>
+            <h3>Candle 5</h3>
+            <p>$16.99</p>
+            <button onclick="addToCart('Candle 5', 16.99)">Add to Cart</button>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product">
+            <a href="images/download.jpg" data-lightbox="product1" data-title="Candle 6"
+                onclick="showProductDetails('Candle 6', 'Lorem ipsum description.')">
+                <img src="images/download.jpg" alt="Candle 6">
+            </a>
+            <h3>Candle 6</h3>
+            <p>$16.99</p>
+            <button onclick="addToCart('Candle 6', 16.99)">Add to Cart</button>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="product">
+            <a href="images/download.jpg" data-lightbox="product1" data-title="Candle 7"
+                onclick="showProductDetails('Candle 7', 'Lorem ipsum description.')">
+                <img src="images/download.jpg" alt="Candle 7">
+            </a>
+            <h3>Candle 7</h3>
+            <p>$16.99</p>
+            <button onclick="addToCart('Candle 7', 16.99)">Add to Cart</button>
+        </div>
+        <!-- Product 8 -->
+        <div class="product">
+            <a href="images/download.jpg" data-lightbox="product1" data-title="Candle 8"
+                onclick="showProductDetails('Candle 8', 'Lorem ipsum description.')">
+                <img src="images/download.jpg" alt="Candle 8">
+            </a>
+            <h3>Candle 8</h3>
+            <p>$16.99</p>
+            <button onclick="addToCart('Candle 8', 16.99)">Add to Cart</button>
+        </div>
+    </div>
+
+    <!-- New Arrivals heading -->
+    <h2 style="text-align: center; font-size: 24px; margin: 20px 0;">New Arrivals</h2>
+
+    <!-- Products container -->
+    <div class="products-scroll-wrapper">
+        <!-- Product 9 -->
+        <!-- Product 9 -->
+        <div class="product">
+            <a href="product_details.html"
+                onclick="showProductDetails('Candle 9', 'images/download.jpg', 'Lorem ipsum description.'); return false;">
+                <img src="images/download.jpg" alt="Candle 9">
+            </a>
+            <h3>Candle 9</h3>
+            <p>$19.99</p>
+            <button onclick="addToCart('Candle 9', 19.99)">Add to Cart</button>
+        </div>
+
+
+        <!-- Product 10 -->
+        <div class="product">
+            <a href="images/download.jpg" data-lightbox="product10" data-title="Candle 10"
+                onclick="showProductDetails('Candle 10', 'Lorem ipsum description.')">
+                <img src="images/download.jpg" alt="Candle 10">
+            </a>
+            <h3>Candle 10</h3>
+            <p>$22.99</p>
+            <button onclick="addToCart('Candle 10', 22.99)">Add to Cart</button>
+        </div>
+        <!-- Product 11 -->
+        <div class="product">
+            <a href="images/download.jpg" data-lightbox="product11" data-title="Candle 11"
+                onclick="showProductDetails('Candle 11', 'Lorem ipsum description.')">
+                <img src="images/download.jpg" alt="Candle 11">
+            </a>
+            <h3>Candle 11</h3>
+            <p>$24.99</p>
+            <button onclick="addToCart('Candle 11', 24.99)">Add to Cart</button>
+        </div>
+        <!-- Product 12 -->
+        <div class="product">
+            <a href="images/download.jpg" data-lightbox="product12" data-title="Candle 12"
+                onclick="showProductDetails('Candle 12', 'Lorem ipsum description.')">
+                <img src="images/download.jpg" alt="Candle 12">
+            </a>
+            <h3>Candle 12</h3>
+            <p>$26.99</p>
+            <button onclick="addToCart('Candle 12', 26.99)">Add to Cart</button>
+        </div>
+        <!-- Product 13 -->
+        <div class="product">
+            <a href="images/download.jpg" data-lightbox="product13" data-title="Candle 13"
+                onclick="showProductDetails('Candle 13', 'Lorem ipsum description.')">
+                <img src="images/download.jpg" alt="Candle 13">
+            </a>
+            <h3>Candle 13</h3>
+            <p>$28.99</p>
+            <button onclick="addToCart('Candle 13', 28.99)">Add to Cart</button>
+        </div>
+        <!-- Product 14 -->
+        <div class="product">
+            <a href="images/download.jpg" data-lightbox="product14" data-title="Candle 14"
+                onclick="showProductDetails('Candle 14', 'Lorem ipsum description.')">
+                <img src="images/download.jpg" alt="Candle 14">
+            </a>
+            <h3>Candle 14</h3>
+            <p>$30.99</p>
+            <button onclick="addToCart('Candle 14', 30.99)">Add to Cart</button>
+        </div>
+        <!-- Product 15 -->
+        <div class="product">
+            <a href="images/download.jpg" data-lightbox="product15" data-title="Candle 15"
+                onclick="showProductDetails('Candle 15', 'Lorem ipsum description.')">
+                <img src="images/download.jpg" alt="Candle 15">
+            </a>
+            <h3>Candle 15</h3>
+            <p>$32.99</p>
+            <button onclick="addToCart('Candle 15', 32.99)">Add to Cart</button>
+        </div>
+        <!-- Product 16 -->
+        <div class="product">
+            <a href="images/download.jpg" data-lightbox="product16" data-title="Candle 16"
+                onclick="showProductDetails('Candle 16', 'Lorem ipsum description.')">
+                <img src="images/download.jpg" alt="Candle 16">
+            </a>
+            <h3>Candle 16</h3>
+            <p>$34.99</p>
+            <button onclick="addToCart('Candle 16', 34.99)">Add to Cart</button>
+        </div>
+    </div>
+
+    <!-- Existing HTML code... -->
+
+    <section style="background-color: #f0f0f0; padding: 20px;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <!-- Left side with dummy text for description -->
+            <div style="flex: 1;">
+                <h2>Description</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste
+                    natus
+                    error sit
+                    voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
+                    inventore
+                    veritatis et quasi
+                    architecto beatae vitae dicta sunt explicabo.</p>
+            </div>
+            <!-- Right side with dummy image -->
+            <div style="flex: 1;">
+                <img src="images/download.jpg" alt="Dummy Image" style="width: 80%; border-radius: 5px;">
+            </div>
+        </div>
+    </section>
+    <!-- Cart section -->
+    <div id="cart-popup"
+        style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); z-index: 1000;">
+        <h2>Your Cart</h2>
+        <ul id="cart-items"></ul>
+        <p>Total: $<span id="cart-total">0.00</span></p>
+        <button onclick="checkout()">Checkout</button>
+    </div>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <script src="script.js"></script>
+
+    <footer class="footer-distributed">
+
+        <div class="footer-left">
+
+            <h3>Candle<span>Shop</span></h3>
+
+            <p class="footer-links">
+                <a href="candle.html" class="link-1">Home</a>
+
+                <a href="photo.html">Candles</a>
+
+                <a href="#">Pricing</a>
+
+                <a href="#">About</a>
+
+                <a href="#">Faq</a>
+
+                <a href="#">Contact</a>
+            </p>
+
+            <p class="footer-company-name">Company Name © 2015</p>
+        </div>
+
+        <div class="footer-center">
+
+            <div>
+                <i class="fa fa-map-marker"></i>
+                <p><span>444 S. Cedros Ave</span> Solana Beach, California</p>
+            </div>
+
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>+1.555.555.5555</p>
+            </div>
+
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p><a href="mailto:support@company.com">support@company.com</a></p>
+            </div>
+
+        </div>
+
+        <div class="footer-right">
+
+            <p class="footer-company-about">
+                <span>About the company</span>
+                Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor
+                lacus
+                vehicula sit amet.
+            </p>
+
+            <div class="footer-icons">
+
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-github"></i></a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

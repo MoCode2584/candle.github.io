@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .checkout-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        form {
+            width: 45%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            display: inline-block;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            width: calc(100% - 20px);
+            padding: 12px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .total {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="password"] {
+            margin-bottom: 16px;
+        }
+
+        #coupon-section {
+            margin-top: 20px;
+        }
+
+        #coupon,
+        #apply-coupon {
+            width: calc(50% - 5px);
+            box-sizing: border-box;
+        }
+
+        #apply-coupon {
+            width: calc(50% + 5px);
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://js.stripe.com/v3/"></script>
+
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="icons">
+            <a href="login.html" class="login-icon">
+                <i class="fas fa-user"></i> <!-- Font Awesome user icon -->
+            </a>
+            <i class="fas fa-shopping-cart cart-icon" onclick="viewCart()"></i> <!-- Font Awesome shopping cart icon -->
+        </div>
+        <div class="logo">
+            <a href="candle.html"><strong></strong> Candle Shop</a>
+        </div>
+        <ul>
+            <li><a href="candle.html" class="active">Home</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="photo.html" class="active">Photos</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+            <li><a href="booking.html" class="active">Booking</a></li>
+        </ul>
+    </div>
+
+    <h1>Checkout</h1>
+
+    <div class="checkout-container">
+        <form id="contact-form">
+            <label for="first-name">First Name:</label>
+            <input type="text" id="first-name" name="first-name" placeholder="Enter your first name" required>
+
+            <label for="last-name">Last Name:</label>
+            <input type="text" id="last-name" name="last-name" placeholder="Enter your last name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" placeholder="Enter your address" required>
+
+            <label for="country">Country:</label>
+            <input type="text" id="country" name="country" placeholder="Enter your country" required>
+
+            <label for="state">State:</label>
+            <input type="text" id="state" name="state" placeholder="Enter your state" required>
+
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" placeholder="Enter your city" required>
+
+            <label for="zipcode">Zip Code:</label>
+            <input type="text" id="zipcode" name="zipcode" placeholder="Enter your zip code" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+        </form>
+
+        <form id="payment-form">
+            <label for="card-number">Card Number:</label>
+            <input type="text" id="card-number" name="card-number" placeholder="Enter your card number" required>
+
+            <label for="expiry-date">Expiry Date:</label>
+            <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YYYY" required>
+
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" name="cvv" placeholder="CVV" required>
+            <label for="card-element">Credit or debit card:</label>
+            <div id="card-element"></div>
+            <div id="card-errors" role="alert"></div>
+            <button type="button" onclick="submitPayment()">Pay with Card</button>
+
+
+        </form>
+    </div>
+
+    <div class="total">
+        Total Price (with taxes): $<span id="total-price">0.00</span>
+    </div>
+
+    <div id="coupon-section">
+        <label for="coupon">Coupon Code:</label>
+        <input type="text" id="coupon" name="coupon" placeholder="Enter coupon code">
+        <button id="apply-coupon" onclick="applyCoupon()">Apply Coupon</button>
+    </div>
+    
+    <script>
+        
+     // Function to extract URL parameters
+     function getURLParameter(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    }
+
+    // Function to update the total price on the page
+    function updateTotalPrice() {
+        const totalPriceElement = document.getElementById('total-price');
+        const totalPrice = getURLParameter('total');
+
+        if (totalPrice) {
+            totalPriceElement.textContent = totalPrice;
+        }
+    }
+
+    // Function to dynamically update the cart items and total on checkout.html
+    function updateCartOnCheckoutPage() {
+        const cartItemsElement = document.getElementById('cart-items');
+        let cartList = '';
+        let totalPrice = 0;
+
+        // Retrieve existing cart data from localStorage
+        const storedCart = localStorage.getItem('cart');
+        const cart = storedCart ? JSON.parse(storedCart) : [];
+
+        // Loop through each item in the cart and build the HTML
+        cart.forEach(item => {
+            cartList += `<tr><td>${item.name}</td><td>$${item.price.toFixed(2)}</td></tr>`;
+            totalPrice += item.price;
+        });
+
+        // Add cart items to the table body
+        const tbody = cartItemsElement.querySelector('tbody');
+        tbody.innerHTML = cartList;
+
+        // Update the total price with the sum of item prices
+        const totalPriceElement = document.getElementById('total-price');
+        totalPriceElement.textContent = totalPrice.toFixed(2);
+    }
+
+    // Stripe integration code
+    var stripe = Stripe('your-publishable-key');
+    var elements = stripe.elements();
+
+    var card = elements.create('card');
+    card.mount('#card-element');
+
+    card.addEventListener('change', function (event) {
+        var displayError = document.getElementById('card-errors');
+        if (event.error) {
+            displayError.textContent = event.error.message;
+        } else {
+            displayError.textContent = '';
+        }
+    });
+
+    function submitPayment() {
+        stripe.createToken(card).then(function (result) {
+            if (result.error) {
+                var errorElement = document.getElementById('card-errors');
+                errorElement.textContent = result.error.message;
+            } else {
+                // Send the token to your server for processing
+                var token = result.token.id;
+                // Now you can process the payment on your server
+                // You can send an AJAX request to your server with the token
+                // and handle payment processing and receipt generation on the server side
+                // Example: sendPaymentToServer(token);
+            }
+        });
+    }
+
+    // Call the function to update the total price when the page loads
+    updateTotalPrice();
+
+ // Call the function to update the cart on the checkout page when it loads
+updateCartOnCheckoutPage();
+
+    function applyCoupon() {
+        const couponCode = document.getElementById('coupon').value;
+        const totalPriceElement = document.getElementById('total-price');
+
+        // Check if the entered coupon code is valid
+        if (couponCode === 'SAVE10') {
+            // Apply a discount (adjust the discount amount as needed)
+            const currentTotal = parseFloat(totalPriceElement.textContent);
+            const discount = 10.00; // Example discount amount
+            const discountedTotal = currentTotal - discount;
+
+            // Update the total price with the discount
+            totalPriceElement.textContent = discountedTotal.toFixed(2);
+
+            // You can also display a message indicating the applied coupon
+            alert('Coupon applied successfully!');
+        } else {
+            // Display an error message for an invalid coupon code
+            alert('Invalid coupon code. Please try again.');
+        }
+    }
+
+</script>
+
+    
+</body>
+
+</html>

@@ -1,0 +1,676 @@
+        /* Reset some default styles */
+        body,
+        h1,
+        p,
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: #008080;
+            /* Change the color to your preference */
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        /* First section - Welcome */
+      /* First section - Welcome */
+.welcome-section {
+    background-color: #FFF0EB;
+    padding: 10px 0;
+    text-align: center;
+    font-weight: 400;
+    line-height: 1.42857143;
+
+}
+
+.welcome-section h2 {
+    color: black; /* Set font color to black */
+    font-size: 1.5em; /* Adjust font size as needed */
+    max-width: 600px; /* Set a maximum width for the container */
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+
+
+        /* Second section */
+        .top-bar {
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            /* Center the content horizontally */
+            align-items: center;
+            padding: 30px 6%;
+        }
+
+        .top-bar .icons {
+            margin-left: auto;
+            /* Push the icons to the right */
+        }
+
+        .top-bar .icons i {
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        .top-bar .logo {
+            font-family: 'Sego UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 25px;
+            font-weight: 400;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-decoration: none;
+            margin-right: auto;
+            /* Push the logo to the left */
+        }
+
+
+        /* Icons for sign-in and shopping cart */
+
+        .icons i {
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        /* Navbar styles */
+        /* Third section */
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .icons i {
+            font-size: 20px;
+            margin-right: 10px;
+            color: #ccc;
+            /* Adjust icon color */
+        }
+
+        .navbar .logo a {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 25px;
+            font-weight: 600;
+            /* Increase font weight for a bolder look */
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            /* Slightly reduce letter-spacing for a cleaner look */
+            text-decoration: none;
+        }
+
+        .navbar ul {
+            display: flex;
+            gap: 2rem;
+            /* Increase the gap between tabs */
+            list-style: none;
+            margin: 0 auto;
+            /* Center the tabs */
+            padding: 0;
+        }
+
+        .navbar ul li {
+            margin: 0;
+        }
+
+        .navbar ul a {
+            font-size: 18px;
+            /* Slightly reduce font size */
+            font-weight: 400;
+            color: #ccc;
+            text-transform: capitalize;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            /* Add a smooth color transition */
+        }
+
+        .navbar ul a:hover {
+            color: #fff;
+            /* Change color on hover */
+        }
+
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .logo {
+            font-family: 'Sego UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 25px;
+            font-weight: 400;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-decoration: none;
+        }
+
+        .logo strong {
+            font-family: 'Jost', sans-serif;
+            font-size: 30px;
+            line-height: 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -3px;
+        }
+
+        .icons {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 6%;
+            color: black;
+        }
+
+        ul {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        ul a {
+            font-size: 19px;
+            font-weight: 400;
+            color: #ccc;
+            text-transform: capitalize;
+            text-decoration: none;
+        }
+
+        ul a:hover {
+            color: white;
+        }
+
+        /* Header styles */
+
+        .photos {
+            position: relative;
+            text-align: right;
+        }
+
+        .background-image {
+            width: 100%;
+            max-width: 100%;
+            height: 700px;
+            border-radius: 5px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            /* Position the overlay to the right */
+            transform: translateY(-50%);
+            color: white;
+            text-align: left;
+            /* Align text to the left within the overlay */
+            padding: 20px;
+        }
+
+
+        .overlay h2,
+        .overlay p {
+            margin: 0 0 10px;
+        }
+
+        .overlay button {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+
+        /* Products styles */
+
+
+        .product {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+            text-align: center;
+            flex: 0 0 auto;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            display: inline-block;
+
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            display: block;
+            margin-bottom: 10px;
+            border: 2px solid #ddd;
+            cursor: pointer;
+            white-space: normal;
+        }
+
+        .products-scroll-wrapper {
+            overflow-x: auto;
+            white-space: nowrap;
+            margin: 20px 0;
+            -webkit-overflow-scrolling: touch;
+            /* Enables momentum scrolling on iOS devices */
+        }
+
+        .product h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .product p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .product button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .product button:hover {
+            background-color: #45a049;
+        }
+
+        /* Footer css */
+        .footer-distributed {
+            background: #666;
+            box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+            box-sizing: border-box;
+            width: 100%;
+            text-align: left;
+            font: bold 16px sans-serif;
+            padding: 55px 50px;
+        }
+
+        .footer-distributed .footer-left,
+        .footer-distributed .footer-center,
+        .footer-distributed .footer-right {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        /* Footer left */
+
+        .footer-distributed .footer-left {
+            width: 40%;
+        }
+
+        /* The company logo */
+
+        .footer-distributed h3 {
+            color: #ffffff;
+            font: normal 36px 'Open Sans', cursive;
+            margin: 0;
+        }
+
+        .footer-distributed h3 span {
+            color: lightseagreen;
+        }
+
+        /* Footer links */
+
+        .footer-distributed .footer-links {
+            color: #ffffff;
+            margin: 20px 0 12px;
+            padding: 0;
+        }
+
+        .footer-distributed .footer-links a {
+            display: inline-block;
+            line-height: 1.8;
+            font-weight: 400;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .footer-distributed .footer-company-name {
+            color: #222;
+            font-size: 14px;
+            font-weight: normal;
+            margin: 0;
+        }
+
+        /* Footer Center */
+
+        .footer-distributed .footer-center {
+            width: 35%;
+        }
+
+        .footer-distributed .footer-center i {
+            background-color: #33383b;
+            color: #ffffff;
+            font-size: 25px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 42px;
+            margin: 10px 15px;
+            vertical-align: middle;
+        }
+
+        .footer-distributed .footer-center i.fa-envelope {
+            font-size: 17px;
+            line-height: 38px;
+        }
+
+        .footer-distributed .footer-center p {
+            display: inline-block;
+            color: #ffffff;
+            font-weight: 400;
+            vertical-align: middle;
+            margin: 0;
+        }
+
+        .footer-distributed .footer-center p span {
+            display: block;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        .footer-distributed .footer-center p a {
+            color: lightseagreen;
+            text-decoration: none;
+            ;
+        }
+
+        .footer-distributed .footer-links a:before {
+            content: "|";
+            font-weight: 300;
+            font-size: 20px;
+            left: 0;
+            color: #fff;
+            display: inline-block;
+            padding-right: 5px;
+        }
+
+        .footer-distributed .footer-links .link-1:before {
+            content: none;
+        }
+
+        /* Footer Right */
+
+        .footer-distributed .footer-right {
+            width: 20%;
+        }
+
+        .footer-distributed .footer-company-about {
+            line-height: 20px;
+            color: #92999f;
+            font-size: 13px;
+            font-weight: normal;
+            margin: 0;
+        }
+
+        .footer-distributed .footer-company-about span {
+            display: block;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .footer-distributed .footer-icons {
+            margin-top: 25px;
+        }
+
+        .footer-distributed .footer-icons a {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            background-color: #33383b;
+            border-radius: 2px;
+
+            font-size: 20px;
+            color: #ffffff;
+            text-align: center;
+            line-height: 35px;
+
+            margin-right: 3px;
+            margin-bottom: 5px;
+        }
+
+        /* If you don't want the footer to be responsive, remove these media queries */
+
+        @media (max-width: 880px) {
+
+            .footer-distributed {
+                font: bold 14px sans-serif;
+            }
+
+            .footer-distributed .footer-left,
+            .footer-distributed .footer-center,
+            .footer-distributed .footer-right {
+                display: block;
+                width: 100%;
+                margin-bottom: 40px;
+                text-align: center;
+            }
+
+            .footer-distributed .footer-center i {
+                margin-left: 0;
+            }
+
+        }
+
+        /* Photos.html */
+        /* .candle {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 10px;
+            background-color: #fff;
+            transition: transform 0.3s;
+            overflow: hidden;
+        }
+
+        .candle img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .candle:hover {
+            transform: scale(1.05);
+        } */
+
+
+        /* Cart.html */
+        .logo a {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .total {
+            margin-top: 20px;
+            text-align: right;
+            padding: 15px;
+            margin-bottom: 20px;
+            /* Add margin to create space between total and button */
+        }
+
+        .checkout-btn2,
+        button {
+            /* margin-top: 10px; */
+            padding: 8px;
+            /* Adjust the button padding */
+            background-color: black;
+            /* Change the button color */
+            color: white;
+            cursor: pointer;
+            border: none;
+            border-radius: 1px;
+            font-size: 14px;
+        }
+
+        /* Checkout.html */
+        .checkout-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        form {
+            width: 45%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            display: inline-block;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .checkout-btn {
+            width: calc(100% - 20px);
+            padding: 12px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* 
+        button:hover {
+            background-color: #45a049;
+        } */
+
+        .total {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="password"] {
+            margin-bottom: 16px;
+        }
+
+        /* Coupon */
+        #coupon-section {
+            margin-top: 20px;
+        }
+
+        #coupon,
+        #apply-coupon {
+            width: calc(50% - 5px);
+            box-sizing: border-box;
+        }
+
+        #apply-coupon {
+            width: calc(50% + 5px);
+        }
+
+        .coupon-popup-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .coupon-content {
+            text-align: center;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 14px;
+            color: #888;
+            cursor: pointer;
+            text-decoration: none;
+            /* Remove default underline for anchor elements */
+        }
+
+        .close-button:hover {
+            color: #888;
+            /* Maintain the same color on hover */
+        }
